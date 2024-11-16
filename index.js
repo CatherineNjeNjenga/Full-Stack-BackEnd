@@ -45,7 +45,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then(removedPerson => {
       response.status(204).end()
     })
     .catch(error => next(error))
@@ -60,16 +60,6 @@ app.post('/api/persons/', (request, response, next) => {
       error: 'name or number missing'
     })
   }
-
-  // Person.find({}).then(people => {
-  //   people.forEach(returnedPerson => {
-  //     if (body.name === returnedPerson.name) {
-  //       return response.status(400).json({
-  //         error: 'name must be unique'
-  //       })
-  //     }
-  //   })
-  // })
 
   const person = new Person({
     name: body.name,
