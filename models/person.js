@@ -22,7 +22,7 @@ mongoose.connect(url)
     required: true
   },
   number: {
-    type: Number,
+    type: String,
     minLength: 10,
     required: true
   },
